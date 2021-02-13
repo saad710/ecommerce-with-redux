@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from "./Products.module.css";
 import Product from "./Product/Product";
+// Redux
+import { connect } from "react-redux";
+
 
 const Products = ({products}) => {
+    console.log(products);
     return (
         <div className={styles.products}>
             <h3>product</h3>
@@ -13,4 +17,10 @@ const Products = ({products}) => {
     );
 };
 
-export default Products;
+const mapStateToProps = (state) => {
+    return {
+      products: state.shop.products,
+    };
+  };
+
+  export default connect(mapStateToProps)(Products);
